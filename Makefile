@@ -20,7 +20,6 @@ install: all
 
 install-user:
 	mkdir -p $(HOME)/.config/my-osd
-	cp -n style.css $(HOME)/.config/my-osd/style.css || true
 	install -m 755 scripts/volume_osd.sh $(HOME)/.config/my-osd/volume_osd.sh
 	install -m 755 scripts/brightness_osd.sh $(HOME)/.config/my-osd/brightness_osd.sh
 

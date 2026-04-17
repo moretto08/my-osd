@@ -10,6 +10,7 @@ class OSD : public Gtk::Window {
 public:
     OSD(int value, std::string icon_name) {
         gtk_layer_init_for_window(gobj());
+	    gtk_layer_set_namespace(gobj(), "my-osd");
         gtk_layer_set_layer(gobj(), GTK_LAYER_SHELL_LAYER_OVERLAY);
         gtk_layer_set_anchor(gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, true);
         gtk_layer_set_margin(gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, 100);

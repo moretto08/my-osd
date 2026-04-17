@@ -43,5 +43,5 @@ Add the following to your hyprland.conf:
 ### Customization
 
 The OSD appearance can be fully customized by editing the CSS file located at:
-    ~/.config/myosd/style.css
+   /usr/local/share/my-osd/style.css
 
