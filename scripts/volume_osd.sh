@@ -27,4 +27,4 @@ else
     ICON="audio-volume-high-symbolic"
 fi
 
-~/Documentos/prog/C_C++/my-osd/build/myosd "$VOL" "$ICON" &
+/usr/local/bin/myosd "$VOL" "$ICON" &
