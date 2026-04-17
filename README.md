@@ -1,3 +1,11 @@
+## Disclaimer:
+
+It was vibe-codded!
+
+## About
+
+My-osd is a simple C++ program made for showing OSD for brightness and volume on wayland compositors. It ins't perfect and was only tested with my personal laptop (arch/hyprland).
+
 ## Installation
 
 ### Prerequisites
