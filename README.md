@@ -1,0 +1,39 @@
+## Installation
+
+### Prerequisites
+Make sure you have the following dependencies installed:
+* `gtkmm3`
+* `gtk-layer-shell`
+* `pamixer` (for volume control)
+* `brightnessctl` (for brightness control)
+
+### Quick Start
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/your-username/my-osd.git](https://github.com/your-username/my-osd.git)
+   cd my-osd
+   ```
+
+2. Run the installer:
+
+    ```bash
+    chmod +x install.sh
+    ./install.sh
+    ```
+
+### Usage
+
+Add the following to your hyprland.conf:
+
+    ```Ini,TOML
+    bindel = , XF86AudioRaiseVolume, exec, $HOME/.config/myosd/volume_osd.sh up
+    bindel = , XF86AudioLowerVolume, exec, $HOME/.config/myosd/volume_osd.sh down
+    bindel = , XF86MonBrightnessUp, exec, $HOME/.config/myosd/brightness_osd.sh +
+    bindel = , XF86MonBrightnessDown, exec, $HOME/.config/myosd/brightness_osd.sh -
+    ```
+
+### Customization
+
+The OSD appearance can be fully customized by editing the CSS file located at:
+    ~/.config/myosd/style.css
+

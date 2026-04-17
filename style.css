@@ -1,0 +1,32 @@
+@import url("/home/mateus/.cache/wal/colors-gtk.css");
+
+#osd-box {
+    padding: 0px;
+    background-color: alpha(@background, 0.8);
+    border: .6px solid @color5;
+    border-radius: 18px;
+    min-height: 10px
+}
+
+#osd-box image {
+    padding: 0px;
+    margin: 0px;
+    -gtk-icon-transform: scale(0.6);
+}
+
+levelbar block { 
+    min-height: 2px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 12px; 
+    margin-right: 15px;
+}
+
+levelbar block.filled {
+    background-color: @color5;
+}
+
+levelbar block.empty {
+    background-color: alpha(@color0, 0.3);
+}
