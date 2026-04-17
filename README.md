@@ -33,7 +33,7 @@ Make sure you have the following dependencies installed:
 
 Add the following to your hyprland.conf:
 
-    ```Ini,TOML
+    ```
     bindel = , XF86AudioRaiseVolume, exec, $HOME/.config/myosd/volume_osd.sh up
     bindel = , XF86AudioLowerVolume, exec, $HOME/.config/myosd/volume_osd.sh down
     bindel = , XF86MonBrightnessUp, exec, $HOME/.config/myosd/brightness_osd.sh +
