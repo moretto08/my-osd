@@ -1,5 +1,7 @@
 @import url("/home/mateus/.cache/wal/colors-gtk.css");
 
+#osd-window { background: transparent; }
+
 #osd-box {
     padding: 0px;
     background-color: alpha(@background, 0.8);
@@ -30,3 +32,4 @@ levelbar block.filled {
 levelbar block.empty {
     background-color: alpha(@color0, 0.3);
 }
+

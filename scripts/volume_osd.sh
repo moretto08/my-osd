@@ -12,7 +12,6 @@ case $1 in
         ;;
 esac
 
-pkill -9 myosd 2>/dev/null
 
 VOL=$(pamixer --get-volume)
 IS_MUTED=$(pamixer --get-mute)
