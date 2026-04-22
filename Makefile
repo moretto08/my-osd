@@ -22,6 +22,7 @@ install-user:
 	mkdir -p $(HOME)/.config/my-osd
 	install -m 755 scripts/volume_osd.sh $(HOME)/.config/my-osd/volume_osd.sh
 	install -m 755 scripts/brightness_osd.sh $(HOME)/.config/my-osd/brightness_osd.sh
+	install -m 755 scripts/lock_osd.sh $(HOME)/.config/my-osd/lock_osd.sh
 
 uninstall:
 	rm -f $(DESTDIR)$(BINDIR)/myosd

@@ -1,11 +1,26 @@
 @import url("/home/mateus/.cache/wal/colors-gtk.css");
 
+#osd-label {
+    color: @color5;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+#osd-main-container {
+    background-color: alpha(@background, 0.4);
+    border: .6px solid @color5;
+    border-radius: 20px;
+    padding: 10px;
+    min-height: 10px
+}
+
 #osd-window { background: transparent; }
 
 #osd-box {
     padding: 0px;
-    background-color: alpha(@background, 0.8);
-    border: .6px solid @color5;
+    background-color: transparent;
     border-radius: 18px;
     min-height: 10px
 }
