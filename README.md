@@ -18,7 +18,7 @@ Make sure you have the following dependencies installed:
 ### Quick Start
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/your-username/my-osd.git](https://github.com/your-username/my-osd.git)
+   git clone https://github.com/moretto08/my-osd.git
    cd my-osd
    ```
 
