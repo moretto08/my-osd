@@ -37,6 +37,10 @@ Add the following to your hyprland.conf:
     bindel = , XF86AudioLowerVolume, exec, $HOME/.config/myosd/volume_osd.sh down
     bindel = , XF86MonBrightnessUp, exec, $HOME/.config/myosd/brightness_osd.sh +
     bindel = , XF86MonBrightnessDown, exec, $HOME/.config/myosd/brightness_osd.sh -
+
+    #CAPS and NUM lock
+    bindl = , Caps_Lock, exec, $HOME/.config/my-osd/lock_osd.sh capslock
+    bindl = , Num_Lock, exec, $HOME/.config/my-osd/lock_osd.sh numlock
     
 ### Customization
 
