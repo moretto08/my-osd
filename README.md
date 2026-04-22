@@ -1,4 +1,4 @@
-## Disclaimer:
+## Disclaimer
 
 It was vibe-codded!
 
