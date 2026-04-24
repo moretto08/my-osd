@@ -4,7 +4,7 @@ It was vibe-codded!
 
 ## About
 
-My-osd is a simple C++ program made for showing OSD for brightness and volume on wayland compositors. It ins't perfect and was only tested with my personal laptop (arch/hyprland).
+Myosd is a simple C++ program made for showing OSD for brightness and volume on wayland compositors. It ins't perfect and was only tested with my personal laptop (arch/hyprland).
 
 ## Installation
 
@@ -31,19 +31,23 @@ Make sure you have the following dependencies installed:
 
 ### Usage
 
-Add the following to your hyprland.conf:
+   Add the following to your hyprland.conf:
 
-    bindel = , XF86AudioRaiseVolume, exec, $HOME/.config/myosd/volume_osd.sh up
-    bindel = , XF86AudioLowerVolume, exec, $HOME/.config/myosd/volume_osd.sh down
-    bindel = , XF86MonBrightnessUp, exec, $HOME/.config/myosd/brightness_osd.sh +
-    bindel = , XF86MonBrightnessDown, exec, $HOME/.config/myosd/brightness_osd.sh -
+      #Laptop keys for volume and LCD brightness
+      bindel = ,XF86AudioRaiseVolume, exec, /usr/lib/myosd/volume_osd.sh up
+      bindel = ,XF86AudioLowerVolume, exec, /usr/lib/myosd/volume_osd.sh down
+      bindel = ,XF86AudioMute, exec, /usr/lib/myosd/volume_osd.sh mute
+      bindel = ,XF86MonBrightnessUp, exec, /usr/lib/myosd/brightness_osd.sh +
+      bindel = ,XF86MonBrightnessDown, exec, /usr/lib/myosd/brightness_osd.sh -
+      bindel = , XF86Display, exec, kitty -e hyprmode
 
-    #CAPS and NUM lock
-    bindl = , Caps_Lock, exec, $HOME/.config/my-osd/lock_osd.sh capslock
-    bindl = , Num_Lock, exec, $HOME/.config/my-osd/lock_osd.sh numlock
-    
+      #CAPS and NUM lock
+      bindl = , Caps_Lock, exec, /usr/lib/myosd/lock_osd.sh capslock
+      bindl = , Num_Lock, exec, /usr/lib/myosd/lock_osd.sh numlock   
+ 
 ### Customization
 
-The OSD appearance can be fully customized by editing the CSS file located at:
-   /usr/local/share/my-osd/style.css
+After instalation you can copy the style.css for your config folder using:
+
+      sudo cp /usr/share/myosd/style.css ~/.config/myosd/style.css
 
