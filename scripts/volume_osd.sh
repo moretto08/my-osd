@@ -26,4 +26,4 @@ else
     ICON="audio-volume-high-symbolic"
 fi
 
-/usr/local/bin/myosd "$VOL" "$ICON" &
+/usr/bin/myosd "$VOL" "$ICON" &

@@ -26,4 +26,4 @@ fi
 echo "$NEW_VAL" > "$STATE_FILE"
 
 # Envia para o OSD
-/usr/local/bin/myosd "-1" "$ICON" "$STATE" &
+/usr/bin/myosd "-1" "$ICON" "$STATE" &
