@@ -6,7 +6,8 @@ SRC = main.cpp
 
 PREFIX ?= /usr/local
 BINDIR = $(PREFIX)/bin
-SHAREDIR = $(PREFIX)/share/my-osd
+SHAREDIR = $(PREFIX)/share/myosd
+LIBDIR = $(PREFIX)/lib/myosd
 
 all: $(TARGET)
 
@@ -15,15 +16,17 @@ $(TARGET): $(SRC)
 	$(CXX) $(SRC) $(CXXFLAGS) -o $(TARGET) $(LIBS)
 
 install: all
-	install -Dm755 $(TARGET) $(DESTDIR)$(BINDIR)/myosd
-	install -Dm644 style.css $(DESTDIR)$(SHAREDIR)/style.css
+	install -d $(DESTDIR)$(BINDIR)
+	install -d $(DESTDIR)$(SHAREDIR)
+	install -d $(DESTDIR)$(LIBDIR)
 
-install-user:
-	mkdir -p $(HOME)/.config/my-osd
-	install -m 755 scripts/volume_osd.sh $(HOME)/.config/my-osd/volume_osd.sh
-	install -m 755 scripts/brightness_osd.sh $(HOME)/.config/my-osd/brightness_osd.sh
-	install -m 755 scripts/lock_osd.sh $(HOME)/.config/my-osd/lock_osd.sh
+	install -m755 $(TARGET) $(DESTDIR)$(BINDIR)/myosd
+	install -m644 style.css $(DESTDIR)$(SHAREDIR)/style.css
 
+	install -m755 scripts/volume_osd.sh $(DESTDIR)$(LIBDIR)/volume_osd.sh
+	install -m755 scripts/brightness_osd.sh $(DESTDIR)$(LIBDIR)/brightness_osd.sh
+	install -m755 scripts/lock_osd.sh $(DESTDIR)$(LIBDIR)/lock_osd.sh
+	
 uninstall:
 	rm -f $(DESTDIR)$(BINDIR)/myosd
 	rm -rf $(DESTDIR)$(SHAREDIR)
