@@ -1,5 +1,3 @@
-![Demonstração do OSD](osd-demo.gif)
-
 ## Disclaimer
 
 It was (partially) vibe-codded!
