@@ -4,7 +4,7 @@ LIBS = `pkg-config --libs gtkmm-3.0 gtk-layer-shell-0`
 TARGET = build/myosd
 SRC = main.cpp
 
-PREFIX ?= /usr/local
+PREFIX ?= /usr
 BINDIR = $(PREFIX)/bin
 SHAREDIR = $(PREFIX)/share/myosd
 LIBDIR = $(PREFIX)/lib/myosd

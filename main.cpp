@@ -23,6 +23,7 @@ class OSD : public Gtk::Window {
 private:
     Gtk::LevelBar* bar = nullptr;
     Gtk::Label* label = nullptr;
+    Gtk::Image* icon_widget = nullptr;
     sigc::connection timeout_conn;
 
 public:
@@ -42,9 +43,9 @@ public:
         content_box->set_name("osd-box");
         content_box->set_halign(Gtk::ALIGN_CENTER);
         
-        auto* icon = Gtk::make_managed<Gtk::Image>();
-        icon->set_from_icon_name(icon_name, Gtk::ICON_SIZE_DIALOG);
-        content_box->pack_start(*icon, Gtk::PACK_SHRINK);
+        icon_widget = Gtk::make_managed<Gtk::Image>();
+        icon_widget->set_from_icon_name(icon_name, Gtk::ICON_SIZE_DIALOG);
+        content_box->pack_start(*icon_widget, Gtk::PACK_SHRINK);
 
         if (value >= 0) {
             bar = Gtk::make_managed<Gtk::LevelBar>();
@@ -67,7 +68,11 @@ public:
         reset_timer();
     }
 
-    void update_osd(int value, std::string text) {
+    void update_osd(int value, std::string icon_name, std::string text) {
+    if (icon_widget && !icon_name.empty()) {
+        icon_widget->set_from_icon_name(icon_name, Gtk::ICON_SIZE_DIALOG);
+    }
+
     if (bar) {
         if (value >= 0) {
             bar->set_value(value / 100.0);
@@ -99,6 +104,7 @@ public:
 
 struct OSDData {
     int value;
+    char icon[64];
     char text[32];
 };
 
@@ -110,7 +116,7 @@ bool on_socket_data(Glib::IOCondition cond, int server_fd, OSD* osd) {
             memset(&data, 0, sizeof(OSDData));
             
             if (read(client_fd, &data, sizeof(OSDData)) > 0) {
-                osd->update_osd(data.value, std::string(data.text));
+                osd->update_osd(data.value, std::string(data.icon), std::string(data.text));
             }
             close(client_fd);
         }
@@ -130,7 +136,9 @@ int main(int argc, char* argv[]) {
     int sock = socket(AF_UNIX, SOCK_STREAM | SOCK_NONBLOCK, 0);
     if (connect(sock, (struct sockaddr*)&addr, sizeof(addr)) == 0) {
         OSDData data;
+        memset(&data, 0, sizeof(OSDData));
         data.value = value;
+        strncpy(data.icon, icon.c_str(), sizeof(data.icon)-1);
         strncpy(data.text, text.c_str(), sizeof(data.text)-1);
         send(sock, &data, sizeof(data), 0);
         close(sock);
