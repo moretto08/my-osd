@@ -1,3 +1,5 @@
+![osd-demo](osd-demo.GIF)
+
 ## Disclaimer
 
 It was (partially) vibe-codded!
