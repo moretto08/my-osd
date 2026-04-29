@@ -25,7 +25,8 @@ install: all
 
 	install -m755 scripts/volume_osd.sh $(DESTDIR)$(LIBDIR)/volume_osd.sh
 	install -m755 scripts/brightness_osd.sh $(DESTDIR)$(LIBDIR)/brightness_osd.sh
-	install -m755 scripts/lock_osd.sh $(DESTDIR)$(LIBDIR)/lock_osd.sh
+	install -m755 scripts/capslock_osd.sh $(DESTDIR)$(LIBDIR)/capslock_osd.sh
+	install -m755 scripts/numlock_osd.sh $(DESTDIR)$(LIBDIR)/numlock_osd.sh
 	
 uninstall:
 	rm -f $(DESTDIR)$(BINDIR)/myosd

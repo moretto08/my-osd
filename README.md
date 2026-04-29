@@ -46,8 +46,8 @@ Make sure you have the following dependencies installed:
       bindel = ,XF86MonBrightnessDown, exec, /usr/lib/myosd/brightness_osd.sh -
      
       #CAPS and NUM lock
-      bindl = , Caps_Lock, exec, /usr/lib/myosd/lock_osd.sh capslock
-      bindl = , Num_Lock, exec, /usr/lib/myosd/lock_osd.sh numlock   
+      bindl = , Caps_Lock, exec, /usr/lib/myosd/capslock_osd.sh capslock
+      bindl = , Num_Lock, exec, /usr/lib/myosd/numlock_osd.sh numlock
  
 ### Customization & tips
 
