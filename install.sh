@@ -26,13 +26,5 @@ else
     exit 1
 fi
 
-echo -e "${GREEN}Installing scripts and styles to user home...${NC}"
-if make install-user; then
-    echo "User configuration installed in ~/.config/myosd"
-else
-    echo -e "${RED}Failed to install user configurations.${NC}"
-    exit 1
-fi
-
 echo -e "${BLUE}Installation complete!${NC}"
-echo "Don't forget to update your hyprland.conf to point to ~/.config/myosd/ scripts."
+echo "Don't forget to update your hyprland.conf to point to /usr/lib/myosd/ script."
