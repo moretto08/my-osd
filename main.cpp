@@ -88,7 +88,8 @@ public:
         label->show();
     }
     
-    while (Gtk::Main::events_pending()) Gtk::Main::iteration();
+    // Removed manual iteration: allow GTK main loop to handle events and animations.
+    // while (Gtk::Main::events_pending()) Gtk::Main::iteration();
     
     reset_timer();
 }
