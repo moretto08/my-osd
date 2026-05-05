@@ -47,52 +47,51 @@ public:
         icon_widget->set_from_icon_name(icon_name, Gtk::ICON_SIZE_DIALOG);
         content_box->pack_start(*icon_widget, Gtk::PACK_SHRINK);
 
-        if (value >= 0) {
-            bar = Gtk::make_managed<Gtk::LevelBar>();
-            bar->set_value(value / 100.0);
-            bar->set_size_request(200, 10);
-            bar->set_valign(Gtk::ALIGN_CENTER);
-            content_box->pack_start(*bar, Gtk::PACK_SHRINK);
-        }
+        bar = Gtk::make_managed<Gtk::LevelBar>();
+        bar->set_size_request(200, 10);
+        bar->set_valign(Gtk::ALIGN_CENTER);
+        content_box->pack_start(*bar, Gtk::PACK_SHRINK);
 
         main_box->pack_start(*content_box, Gtk::PACK_SHRINK);
 
-        if (!text.empty()) {
-            label = Gtk::make_managed<Gtk::Label>(text);
-            label->set_name("osd-label");
-            main_box->pack_start(*label, Gtk::PACK_SHRINK);
-        }
+        label = Gtk::make_managed<Gtk::Label>();
+        label->set_name("osd-label");
+        main_box->pack_start(*label, Gtk::PACK_SHRINK);
         
         add(*main_box);
         show_all_children();
-        reset_timer();
+        update_osd(value, icon_name, text);
     }
 
     void update_osd(int value, std::string icon_name, std::string text) {
-    if (icon_widget && !icon_name.empty()) {
-        icon_widget->set_from_icon_name(icon_name, Gtk::ICON_SIZE_DIALOG);
-    }
-
-    if (bar) {
-        if (value >= 0) {
-            bar->set_value(value / 100.0);
-            bar->show();
-        } else {
-            bar->hide(); 
+        if (icon_widget && !icon_name.empty()) {
+            icon_widget->set_from_icon_name(icon_name, Gtk::ICON_SIZE_DIALOG);
         }
+
+        if (bar) {
+            if (value >= 0) {
+                bar->set_value(value / 100.0);
+                bar->show();
+            } else {
+                bar->hide();
+            }
+        }
+
+        if (label) {
+            label->set_markup("");
+            label->set_text(text);
+            if (!text.empty()) {
+                label->show();
+            } else {
+                label->hide();
+            }
+        }
+
+        // Removed manual iteration: allow GTK main loop to handle events and animations.
+        // while (Gtk::Main::events_pending()) Gtk::Main::iteration();
+
+        reset_timer();
     }
-    
-    if (label) {
-        label->set_markup("");
-        label->set_text(text);
-        label->show();
-    }
-    
-    // Removed manual iteration: allow GTK main loop to handle events and animations.
-    // while (Gtk::Main::events_pending()) Gtk::Main::iteration();
-    
-    reset_timer();
-}
 
     void reset_timer() {
         if (timeout_conn.connected()) timeout_conn.disconnect();
@@ -185,7 +184,7 @@ auto css_provider = Gtk::CssProvider::create();
     OSD osd(value, icon, text);
     Glib::signal_io().connect(sigc::bind(sigc::ptr_fun(&on_socket_data), server_fd, &osd), server_fd, Glib::IO_IN);
 
-    osd.show_all();
+    osd.show();
     Gtk::Main::run(osd);
     unlink(SOCKET_PATH);
     return 0;
